@@ -1,68 +1,131 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 import DropDown from "./components/Dropdown";
+import Card from "./components/Card";
+import Carousel from "./components/Carousel";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const API_URL = "https://assessment-edvora.herokuapp.com/";
+const API_URL = "https://zoo-animal-api.herokuapp.com/animals/rand/10";
 
-const App = () => {
-	const [allProducts, setAllProducts] = useState([]);
-	const [allStates, setAllStates] = useState([]);
-	const [allCities, setAllCities] = useState([]);
+function App() {
+  const [allResults, setAllResults] = useState([]);
+  const [allAnimals, setAllAnimals] = useState([]);
+  const [allTypes, setAllTypes] = useState([]);
+  const [allActiveTimes, setAllActiveTimes] = useState([]);
+  const [selectedAnimal, setSelectedAnimal] = useState('');
+  const [selectedType, setSelectedType] = useState('');
+  const [selectedActiveTime, setSelectedActiveTime] = useState('');
 
-	async function getData() {
-		const results = await axios.get(API_URL);
+  async function getData() {
+    const results = await axios.get(API_URL);
+    console.log(results);
 
-		// create a variable to hold the products
-		// map through the products and create a new array of strings
-		//(set this new array to the variable you created)
-		const products = results.data.map((item) => item.product_name);
+    // create a variable to hold the array of animals
+    const animalObjects = results.data;
+    // set 'all animals' State to new array
+    setAllResults(animalObjects);
 
-		//create an array of unique product names
-		const uniqueProducts = new Set(products);
-		//console.log([...uniqueProducts]);
+    // create a variable to hold the animal names
+    // map through the animal names and create a new array of strings
+    // (set this new array to the variable you created)
+    const animals = results.data.map((animal) => animal.name);
 
-		// set the state of the products to the new unique array
-		setAllProducts([...uniqueProducts]);
-		console.log(results.data);
+    // set 'all animals names' State to new array
+    setAllAnimals(animals);
 
-		//create a variable to hold all the states
-		const states = results.data.map((item) => item.address.state);
-		//create an array of unique state names
-		const uniqueStates = new Set(states);
-		//console.log([...uniqueStates]);
+    // create a variable to hold all the states
+    const types = results.data.map((animal) => animal.animal_type);
 
-		// set the state of the allStates to the new unique array
-		setAllStates([...uniqueStates]);
+    const uniqueTypes = new Set(types);
 
-		//create a variable to hold all the states
-		const cities = results.data.map((item) => item.address.city);
-		//create an array of unique state names
-		const uniqueCities = new Set(cities);
-		//console.log([...uniqueStates]);
+    // set the state of allTypes
+    setAllTypes([...uniqueTypes]);
 
-		// set the state of the allStates to the new unique array
-		setAllCities([...uniqueCities]);
-	}
+    // create a variable to hold all the states
+    const times = results.data.map((animal) => animal.active_time);
+    const uniqueTimes = new Set(times);
 
-	useEffect(() => {
-		getData();
-	}, []);
+    // set the state of the allStates to the new unique array
+    setAllActiveTimes([...uniqueTimes]);
+  }
 
-	return (
-		<div className="container">
-			<div className="sidebar">
-				<div className="filterHeading">Filters</div>
+  useEffect(() => {
+    getData();
+  }, []);
 
-				<DropDown items={allProducts} label="Products" />
-				<DropDown items={allStates} label="States" />
-				<DropDown items={allCities} label="Cities" />
-			</div>
+  return (
+    <div className="container">
+      <div className="sidebar">
+        <div className="filterHeading">Filters</div>
 
-			<div className="caroussel-section">
-				<h1>Edvora</h1>
-				{/* <div>
+        <DropDown
+          items={allAnimals}
+          label="Animals"
+          setItem={setSelectedAnimal}
+          selectedItem={selectedAnimal}
+        />
+        <DropDown
+          items={allTypes}
+          label="Types"
+          setItem={setSelectedType}
+          selectedItem={selectedType}
+        />
+        <DropDown
+          items={allActiveTimes}
+          label="Active Times"
+          setItem={setSelectedActiveTime}
+          selectedItem={selectedActiveTime}
+        />
+      </div>
+
+      <div className="main-section">
+        <h1>Zoo Friends</h1>
+        <h2>All Animals</h2>
+
+        <div className="caroussel-container">
+        <Carousel>
+            {allResults.map((animal) => (
+              <Card
+                type={animal.animal_type}
+                name={animal.name}
+                image={animal.image_link}
+                latinName={animal.latin_name}
+                lifeSpan={animal.lifespan}
+                habitat={animal.habitat}
+                diet={animal.diet}
+              />
+            ))}
+          </Carousel>
+        </div>
+          <h3>
+            Animals by Type: <span></span>
+            {selectedType}
+          </h3>
+         {/* <div className="cards-area"></div>
+             */}
+           <Carousel>
+                 {allResults
+              .filter((animal) => animal.animal_type === selectedType)
+              .map((animal) => (
+                <Card
+                type={animal.animal_type}
+                  name={animal.name}
+                  image={animal.image_link}
+                  latinName={animal.latin_name}
+                  lifeSpan={animal.lifespan}
+                  habitat={animal.habitat}
+                  diet={animal.diet}
+                />
+              ))}
+          </Carousel>
+           
+          
+
+          
+        {/* <div>
 					<h3>{title}</h3>
 					<CardContainer>
 						{products.map(() => (
@@ -70,9 +133,9 @@ const App = () => {
 						))}
 					</CardContainer>
 				</div> */}
-			</div>
-		</div>
-	);
-};
+      </div>
+    </div>
+  );
+}
 
 export default App;
