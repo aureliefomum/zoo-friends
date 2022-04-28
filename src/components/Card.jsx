@@ -1,32 +1,56 @@
-import React from "react";
+import React from 'react';
 
-export default function Card({name, image, type, lifeSpan, latinName}){
-    return(
-        <div className="card-container">
+export default function Card({type,
 
-        <div className="card-top-half">
-            <div className="image-wrapper">
-            <img src="https://source.unsplash.com/random/150x150" alt="product images"  />
-            
+  name,
+  image,
+  lifeSpan,
+  latinName,
+  habitat,
+  diet,
+}) {
+  return (
+    <div className="card-container">
+      <div className="card-top-half">
+        <div className="image-wrapper">
+          <img src={image} alt="animal pic" />
         </div>
 
         <div className="names-wrapper">
-        <p className="product-name">{name}</p>
-        <p className="brand-name">Brand Name</p>
-        <p className="price"> <span>$</span>29.99</p>
-        
+          <p className="animal-name">
+            Name:
+            {name}
+          </p>
+          <p className="type">
+            Type:
+            {type}
+          </p>
+          <p className="latin-name">
+            Latin Name:
+            {latinName}
+          </p>
+          <p className="life-span">
+            {" "}
+            <span>
+              Lifespan:
+              {lifeSpan}
+            </span>
+            years
+          </p>
         </div>
+      </div>
 
-        </div>
-
-        <div className="card-bottom-half">
-        <span>Location</span>
-        <span>Date:10:12:2021</span>
-        
-        </div>
-        <p className="description">Description of the product/item</p>
-        
-      
+      <div className="card-bottom-half">
+        <span>Habitat: </span>
+        <span className="habitat"> 
+{' '}
+{habitat}
+</span>
+      </div>
+      <p className="diet">
+        Diet:
+        {diet}
+      </p>
     </div>
-    )
+  );
 }
