@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-export default function Card({type,
-
+export default function Card({
+  type,
   name,
   image,
   lifeSpan,
@@ -42,10 +42,7 @@ export default function Card({type,
 
       <div className="card-bottom-half">
         <span>Habitat: </span>
-        <span className="habitat"> 
-{' '}
-{habitat}
-</span>
+        <span className="habitat"> {habitat}</span>
       </div>
       <p className="diet">
         Diet:
