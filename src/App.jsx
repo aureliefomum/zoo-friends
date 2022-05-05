@@ -15,9 +15,9 @@ function App() {
   const [allAnimals, setAllAnimals] = useState([]);
   const [allTypes, setAllTypes] = useState([]);
   const [allActiveTimes, setAllActiveTimes] = useState([]);
-  const [selectedAnimal, setSelectedAnimal] = useState('');
-  const [selectedType, setSelectedType] = useState('');
-  const [selectedActiveTime, setSelectedActiveTime] = useState('');
+  const [selectedAnimal, setSelectedAnimal] = useState("");
+  const [selectedType, setSelectedType] = useState("");
+  const [selectedActiveTime, setSelectedActiveTime] = useState("");
 
   async function getData() {
     const results = await axios.get(API_URL);
@@ -86,7 +86,7 @@ function App() {
         <h2>All Animals</h2>
 
         <div className="caroussel-container">
-        <Carousel>
+          <Carousel>
             {allResults.map((animal) => (
               <Card
                 type={animal.animal_type}
@@ -100,31 +100,28 @@ function App() {
             ))}
           </Carousel>
         </div>
-          <h3>
-            Animals by Type: <span></span>
-            {selectedType}
-          </h3>
-         {/* <div className="cards-area"></div>
-             */}
-           <Carousel>
-                 {allResults
-              .filter((animal) => animal.animal_type === selectedType)
-              .map((animal) => (
-                <Card
+        <h3>
+          Animals by Type: <span></span>
+          {selectedType}
+        </h3>
+        {/* <div className="cards-area"></div>
+         */}
+        <Carousel>
+          {allResults
+            .filter((animal) => animal.animal_type === selectedType)
+            .map((animal) => (
+              <Card
                 type={animal.animal_type}
-                  name={animal.name}
-                  image={animal.image_link}
-                  latinName={animal.latin_name}
-                  lifeSpan={animal.lifespan}
-                  habitat={animal.habitat}
-                  diet={animal.diet}
-                />
-              ))}
-          </Carousel>
-           
-          
+                name={animal.name}
+                image={animal.image_link}
+                latinName={animal.latin_name}
+                lifeSpan={animal.lifespan}
+                habitat={animal.habitat}
+                diet={animal.diet}
+              />
+            ))}
+        </Carousel>
 
-          
         {/* <div>
 					<h3>{title}</h3>
 					<CardContainer>
