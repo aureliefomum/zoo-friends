@@ -21,7 +21,7 @@ function App() {
 
   async function getData() {
     const results = await axios.get(API_URL);
-    console.log(results);
+    // console.log(results);
 
     // create a variable to hold the array of animals
     const animalObjects = results.data;
@@ -101,10 +101,10 @@ function App() {
           </Carousel>
         </div>
         <h3>
-          Animals by Type: <span></span>
+          Animals by Type: <span />
           {selectedType}
         </h3>
-        {/* <div className="cards-area"></div>
+        {/* <div className='cards-area'></div>
          */}
         <Carousel>
           {allResults

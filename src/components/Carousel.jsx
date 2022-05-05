@@ -1,14 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import Slider from "react-slick";
-import Card from "./Card";
 
-
-
-// export default class Responsive extends Component {
-const Carousel = ({
-  children
-}) => {
-  var settings = {
+const Carousel = ({ children }) => {
+  const settings = {
     dots: true,
     infinite: false,
     speed: 500,
@@ -22,35 +16,33 @@ const Carousel = ({
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
-  
+
   return (
     <div>
-      <h2>  </h2>
-      <Slider {...settings}>
-       {children}
-      </Slider>
+      <h2> </h2>
+      <Slider {...settings}>{children}</Slider>
     </div>
   );
-}
+};
 
 export default Carousel;
