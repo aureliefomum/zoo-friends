@@ -41,8 +41,7 @@ export default function Card({
       </div>
 
       <div className="card-bottom-half">
-        <span>Habitat: </span>
-        <span className="habitat"> {habitat}</span>
+        <span className="habitat">Habitat:{habitat} </span>
       </div>
       <p className="diet">
         Diet:
