@@ -1,6 +1,6 @@
 # Zoo Friends App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![](https://user-images.githubusercontent.com/24625551/187979276-298d8497-06e1-4cff-854b-5eae2e35a5a4.gif).
 
 ## Available Scripts
 
