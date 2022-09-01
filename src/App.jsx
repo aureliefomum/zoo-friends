@@ -12,12 +12,12 @@ const API_URL = "https://zoo-animal-api.herokuapp.com/animals/rand/10";
 
 function App() {
   const [allResults, setAllResults] = useState([]);
-//   const [allAnimals, setAllAnimals] = useState([]);
+  //   const [allAnimals, setAllAnimals] = useState([]);
   // const [allLifeSpans, setAllLifeSpans] = useState({ages1to20:[], ages20to30:[], ages30to50:[]});
   const [allTypes, setAllTypes] = useState([]);
   const [selectedLifeSpan, setSelectedLifeSpan] = useState("");
   const [allActiveTimes, setAllActiveTimes] = useState([]);
- // const [selectedAnimal, setSelectedAnimal] = useState("");
+  // const [selectedAnimal, setSelectedAnimal] = useState("");
   const [selectedType, setSelectedType] = useState("");
   const [selectedActiveTime, setSelectedActiveTime] = useState("");
 
@@ -94,40 +94,40 @@ function App() {
 
   // create a variable to hold the lifespan options you want to display in the dropdown
   const lifespanOptions = ["1-20 years", "21-30 years", "31-50 years"];
-//   const filteredLifeSpans = allResults
-//     .filter((animal) => {
-//       if (selectedLifeSpan === "") {
-//         return true;
-//       }
-//       if (selectedLifeSpan === "1-20 years") {
-//         if (animal.lifespan < 20) {
-//           return true;
-//         }
-//       }
-//       if (selectedLifeSpan === "21-30 years") {
-//         if (animal.lifespan > 20 && animal.lifespan < 30) {
-//           return true;
-//         }
-//       }
-//       if (selectedLifeSpan === "31-50 years") {
-//         if (animal.lifespan > 30) {
-//           return true;
-//         }
-//       }
-      
-//     })
-//     .map((animal) => (
-//       <Card
-//         type={animal.animal_type}
-//         name={animal.name}
-//         image={animal.image_link}
-//         latinName={animal.latin_name}
-//         lifeSpan={animal.lifespan}
-//         habitat={animal.habitat}
-//         diet={animal.diet}
-//         activeTime={animal.active_time}
-//       />
-//     ));
+  //   const filteredLifeSpans = allResults
+  //     .filter((animal) => {
+  //       if (selectedLifeSpan === "") {
+  //         return true;
+  //       }
+  //       if (selectedLifeSpan === "1-20 years") {
+  //         if (animal.lifespan < 20) {
+  //           return true;
+  //         }
+  //       }
+  //       if (selectedLifeSpan === "21-30 years") {
+  //         if (animal.lifespan > 20 && animal.lifespan < 30) {
+  //           return true;
+  //         }
+  //       }
+  //       if (selectedLifeSpan === "31-50 years") {
+  //         if (animal.lifespan > 30) {
+  //           return true;
+  //         }
+  //       }
+
+  //     })
+  //     .map((animal) => (
+  //       <Card
+  //         type={animal.animal_type}
+  //         name={animal.name}
+  //         image={animal.image_link}
+  //         latinName={animal.latin_name}
+  //         lifeSpan={animal.lifespan}
+  //         habitat={animal.habitat}
+  //         diet={animal.diet}
+  //         activeTime={animal.active_time}
+  //       />
+  //     ));
 
   //const ageGroups = [lifeSpansBelow11]
 
@@ -142,26 +142,26 @@ function App() {
     // if selectedLifespan === "21-30"
     // if animal.lifespan > 20 && animal.lifespan < 30 return true
     .filter((animal) => {
-        if (selectedLifeSpan === "") {
+      if (selectedLifeSpan === "") {
+        return true;
+      }
+      if (selectedLifeSpan === "1-20 years") {
+        if (animal.lifespan < 20) {
           return true;
         }
-        if (selectedLifeSpan === "1-20 years") {
-          if (animal.lifespan < 20) {
-            return true;
-          }
+      }
+      if (selectedLifeSpan === "21-30 years") {
+        if (animal.lifespan > 20 && animal.lifespan < 30) {
+          return true;
         }
-        if (selectedLifeSpan === "21-30 years") {
-          if (animal.lifespan > 20 && animal.lifespan < 30) {
-            return true;
-          }
+      }
+      if (selectedLifeSpan === "31-50 years") {
+        if (animal.lifespan > 30) {
+          return true;
         }
-        if (selectedLifeSpan === "31-50 years") {
-          if (animal.lifespan > 30) {
-            return true;
-          }
-        }
-        
-      }).filter((animal) => {
+      }
+    })
+    .filter((animal) => {
       if (selectedType === "") {
         return true;
       }
@@ -200,7 +200,7 @@ function App() {
 
   const isFilterPresent = selectedType !== "" || selectedActiveTime !== "";
   const filtersStrings = [selectedType, selectedActiveTime]
-  .map((item) => {
+    .map((item) => {
       if (item !== "") {
         return item;
       }
@@ -237,7 +237,6 @@ function App() {
       <div className="main-section">
         <h1>Zoo Friends</h1>
         <h3 className="animalsHeading">
-          
           {!selectedLifeSpan
             ? "Choose a Life Span"
             : `Life Span Range: ${selectedLifeSpan}`}
@@ -245,7 +244,7 @@ function App() {
 
         <div className="caroussel-container">
           <Carousel>
-            {!selectedLifeSpan ? defaultCards : filteredCards }
+            {!selectedLifeSpan ? defaultCards : filteredCards}
           </Carousel>
         </div>
         <h3>
