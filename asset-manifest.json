@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/zoo-friends/static/css/main.7396e89d.css",
+    "main.js": "/zoo-friends/static/js/main.cf1596d3.js",
+    "static/media/slick.svg": "/zoo-friends/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/zoo-friends/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/zoo-friends/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/zoo-friends/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/zoo-friends/index.html",
+    "main.7396e89d.css.map": "/zoo-friends/static/css/main.7396e89d.css.map",
+    "main.cf1596d3.js.map": "/zoo-friends/static/js/main.cf1596d3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7396e89d.css",
+    "static/js/main.cf1596d3.js"
+  ]
+}
