@@ -8,45 +8,49 @@ export default function Card({
   latinName,
   habitat,
   diet,
+  activeTime,
 }) {
   return (
-    <div className="card-container">
-      <div className="card-top-half">
-        <div className="image-wrapper">
-          <img src={image} alt="animal pic" />
-        </div>
-
-        <div className="names-wrapper">
-          <p className="animal-name">
-            Name:
-            {name}
-          </p>
-          <p className="type">
-            Type:
-            {type}
-          </p>
-          <p className="latin-name">
-            Latin Name:
-            {latinName}
-          </p>
-          <p className="life-span">
-            {" "}
-            <span>
-              Lifespan:
-              {lifeSpan}
-            </span>
-            years
-          </p>
-        </div>
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href={`https://wikipedia.org/wiki/${latinName.replace(" ", "_")}`}
+      className="card-container"
+    >
+      <div className="image-wrapper">
+        <img src={image} alt="animal pic" />
       </div>
 
-      <div className="card-bottom-half">
-        <span className="habitat">Habitat:{habitat} </span>
+      <div className="text-wrapper">
+        <p className="label-item">
+          <span className="label">Name: </span>
+          {name}
+        </p>
+        <p className="label-item">
+          <span className="label">Type: </span>
+          {type}
+        </p>
+        <p className="label-item">
+          <span className="label">Latin Name: </span>
+          {latinName}
+        </p>
+        <p className="label-item">
+          <span className="label">Lifespan: </span>
+          {lifeSpan} years
+        </p>
+        <p className="label-item">
+          <span className="label">Habitat: </span>
+          {habitat}
+        </p>
+        <p className="label-item">
+          <span className="label">Diet: </span>
+          {diet}
+        </p>
+        <p className="label-item">
+          <span className="label">Active Time: </span>
+          {activeTime}
+        </p>
       </div>
-      <p className="diet">
-        Diet:
-        {diet}
-      </p>
-    </div>
+    </a>
   );
 }
