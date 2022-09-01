@@ -53,7 +53,6 @@ body {
   margin-left: 40px;
 }
 
-
 h1 {
   color: rgba(255, 255, 255, 0.87);
   font-weight: 700;
@@ -116,10 +115,10 @@ h3 {
 img {
   width: 100px;
   height: 100px;
-  border-radius: 5px;  
+  border-radius: 5px;
 }
 
-.image-wrapper {  
+.image-wrapper {
   margin-right: 10px;
   float: left;
 }
